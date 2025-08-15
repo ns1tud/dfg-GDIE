@@ -1,26 +1,7 @@
 name: Makefile CI
 
-on:
-  push:
-    branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
-  - name: Install TeX Live (minimal + common extras)
-    uses: zauguin/install-texlive@v3
-    with:
-      packages: >-
-        scheme-small
-        latexmk
-        collection-latex
-        collection-latexrecommended
-        collection-fontsrecommended
-        collection-bibtexextra
-        collection-science
-        biber
-
 jobs:
-  build:
-
+  build_latex:
     runs-on: ubuntu-latest
 
     steps:
