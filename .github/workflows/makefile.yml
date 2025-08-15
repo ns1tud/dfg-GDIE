@@ -9,4 +9,5 @@ jobs:
 
     - name: Install dependencies
       uses: xu-cheng/latex-action@v4
-      run: make
+      with:
+        root_file: dfg.tex
