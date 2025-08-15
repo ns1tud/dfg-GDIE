@@ -5,6 +5,18 @@ on:
     branches: [ "master" ]
   pull_request:
     branches: [ "master" ]
+  - name: Install TeX Live (minimal + common extras)
+    uses: zauguin/install-texlive@v3
+    with:
+      packages: >-
+        scheme-small
+        latexmk
+        collection-latex
+        collection-latexrecommended
+        collection-fontsrecommended
+        collection-bibtexextra
+        collection-science
+        biber
 
 jobs:
   build:
@@ -14,14 +26,6 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: configure
-      run: ./configure
-
     - name: Install dependencies
+      uses: xu-cheng/latex-action@v4
       run: make
-
-    - name: Run check
-      run: make check
-
-    - name: Run distcheck
-      run: make distcheck
